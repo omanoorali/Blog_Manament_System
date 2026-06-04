@@ -38,6 +38,45 @@ class model_role{
     return $result;
 
     }
+// edit side se id send karne h or yana query run hogi.
+// or data get karke data retrun kar donga use method p
+    public function get_sigle_id($id){
+
+        $sql ="SELECT * FROM role WHERE id={$id}";// core php
+        $result =  mysqli_query($this->db,$sql);
+        return $result;
+
+
+    
+
+
+
+    }
+
+
+    public function update($role,$role_id){
+        $sql = "UPDATE role set role_name = ? WHERE id=?";
+        $stmt = $this->db->prepare($sql);
+        if($stmt === false){
+            die("updted faild");
+        }
+        $stmt->bind_param("si",$role,$role_id);
+        $result = $stmt->execute();
+        $stmt->close();
+        return $result;
+        
+    }
+   
+
+
+    public function delete($id){
+       $sql  = "DELETE FROM role WHERE id = {$id}";
+       $result =  mysqli_query($this->db,$sql);
+       return $result;
+
+    }
+
+
 
 }
 

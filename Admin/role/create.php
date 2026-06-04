@@ -26,7 +26,7 @@
 
     <div class="w-full max-w-md z-10">
         <!-- Back Link / Breadcrumb -->
-        <a href="../Dashboard.php" class="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white transition-all duration-200 mb-6 group">
+        <a href="../Deshboard.php" class="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white transition-all duration-200 mb-6 group">
             <i class="fa-solid fa-arrow-left transition-transform group-hover:-translate-x-1"></i> Back to Dashboard
         </a>
 

@@ -18,14 +18,18 @@ if (isset($_POST['submit'])) {
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
     $phone_number = $_POST['phone_number'];
     $profile_image = "default.png"; // Default image agar user select na kare
+
+
     if (isset($_FILES['profile_image']) && is_array($_FILES['profile_image']) && $_FILES['profile_image']['error'] == 0) {
         $profile_image = $_FILES['profile_image']['name'];
         move_uploaded_file($_FILES['profile_image']['tmp_name'], "../../uploads/" . $profile_image);
     }
 
+
     $userObj = new User();
-    if ($userObj->create($name, $email, $password, $phone_number, $profile_image,$role_id)) {
-        echo "<script>alert('User Created Successfully!');</script>";
+
+    if ($userObj->create($name, $email, $password, $phone_number, $profile_image, $role_id)) {
+        header("location:index.php");
     } else {
         echo "<script>alert('Database Error: Data could not be saved.');</script>";
     }
@@ -78,7 +82,7 @@ if (isset($_POST['submit'])) {
     <!-- Main Interactive Card -->
     <div class="w-full max-w-lg bg-white rounded-3xl border border-slate-100 shadow-2xl shadow-indigo-100/40 p-6 sm:p-10 relative z-10">
 
-        
+
 
         <!-- Form -->
         <form method="POST" id="createUserForm" class="space-y-5" enctype="multipart/form-data">
@@ -151,7 +155,7 @@ if (isset($_POST['submit'])) {
                         <i class="fa-solid fa-user-shield text-sm"></i>
                     </span>
 
-                    <select id="profile_dropdown" name="profile_dropdown" 
+                    <select id="profile_dropdown" name="profile_dropdown"
                         class="w-full bg-slate-50 border border-slate-200 focus:border-indigo-500 focus:bg-white rounded-2xl pl-11 pr-10 py-3.5 text-sm text-slate-600 outline-none focus:ring-4 focus:ring-indigo-500/10 transition-all duration-200 cursor-pointer appearance-none">
                         <option value="" disabled selected>Ek option select karein</option>
                         <?php while ($roles = mysqli_fetch_assoc($results)) { ?>
@@ -169,14 +173,14 @@ if (isset($_POST['submit'])) {
                 </div>
             </div>
 
-            
+
 
 
             <!-- Action buttons -->
             <div class="flex gap-3 pt-4">
                 <button type="submit" name="submit"
                     class="w-2/3 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold text-sm py-3.5 rounded-2xl transition duration-200 shadow-xl shadow-indigo-600/20 hover:shadow-indigo-500/30 active:scale-[0.98]">
-                    Register Profile
+                    Register user
                 </button>
             </div>
 

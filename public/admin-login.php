@@ -14,7 +14,7 @@
             display:flex;
             justify-content:center;
             align-items:center;
-            background:linear-gradient(135deg,#0d6efd,#6610f2);
+            /* background:linear-gradient(135deg,#0d6efd,#6610f2); */
             font-family:Arial, sans-serif;
         }
 
