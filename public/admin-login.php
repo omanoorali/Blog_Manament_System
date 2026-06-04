@@ -75,7 +75,7 @@
 <div class="card login-card">
 
     <div class="card-header-custom">
-        <h3 class="mb-1">Welcome Back</h3>
+        <h3 class="mb-1">Admin login </h3>
     </div>
 
     <div class="card-body p-4">
@@ -120,8 +120,8 @@
             </div>
 
             <div class="text-center mt-4">
-                <a href="admin-login.php" class="admin-link">
-                    Admin Login
+                <a href="login.php" class="admin-link">
+                    user login
                 </a>
             </div>
 

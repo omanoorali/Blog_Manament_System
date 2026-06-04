@@ -11,13 +11,6 @@ require_once "../../models/Role.php";
 $role = new model_role();
 $results = $role->get_all_roles();
 
-
-
-// $query = "SELECT * FROM role";
-//     $result = mysqli_query($this->db, $query);
-
-//     var_dump($result);
-
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
