@@ -108,8 +108,8 @@
                     </label>
                 </div>
 
-                <a href="#" class="text-decoration-none">
-                    Forgot Password?
+                <a href="../index.php" class="text-decoration-none">
+                   BACK HOME
                 </a>
             </div>
 

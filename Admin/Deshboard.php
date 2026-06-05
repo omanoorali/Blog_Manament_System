@@ -1,3 +1,28 @@
+<?php 
+
+
+require_once "../models/Post.php";
+
+$user = new post_model();
+$user_data  = $user->get_users_deshboard();
+
+
+$post = new post_model();
+$post__catgory  = $post->get_category_deshboard();
+
+
+
+
+?>
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -299,14 +324,12 @@
         </div>
 
         <!-- STATS OVERVIEW CARD ROW -->
-        <div class="row g-4 mb-4">
-            <!-- Card 1: Users count -->
+        <!-- <div class="row g-4 mb-4">
             <div class="col-xl-3 col-md-6">
                 <div class="card stats-card h-100 p-4">
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
                             <p class="text-muted fw-semibold small mb-1 text-uppercase tracking-wider">Total Active Users</p>
-                            <!-- Yahan PHP se user count dalega ($total_users) -->
                             <h3 class="fw-bold mb-0 text-slate-800">128</h3>
                         </div>
                         <div class="stats-icon-box bg-users">
@@ -316,13 +339,11 @@
                 </div>
             </div>
 
-            <!-- Card 2: Total Posts count -->
             <div class="col-xl-3 col-md-6">
                 <div class="card stats-card h-100 p-4">
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
                             <p class="text-muted fw-semibold small mb-1 text-uppercase tracking-wider">Published Posts</p>
-                            <!-- Yahan PHP se posts count dalega ($total_posts) -->
                             <h3 class="fw-bold mb-0 text-slate-800">1,245</h3>
                         </div>
                         <div class="stats-icon-box bg-posts">
@@ -332,13 +353,11 @@
                 </div>
             </div>
 
-            <!-- Card 3: Categories count -->
             <div class="col-xl-3 col-md-6">
                 <div class="card stats-card h-100 p-4">
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
                             <p class="text-muted fw-semibold small mb-1 text-uppercase tracking-wider">Post Categories</p>
-                            <!-- Yahan PHP se categories count dalega ($total_categories) -->
                             <h3 class="fw-bold mb-0 text-slate-800">14</h3>
                         </div>
                         <div class="stats-icon-box bg-categories">
@@ -348,13 +367,11 @@
                 </div>
             </div>
 
-            <!-- Card 4: Comments count -->
             <div class="col-xl-3 col-md-6">
                 <div class="card stats-card h-100 p-4">
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
                             <p class="text-muted fw-semibold small mb-1 text-uppercase tracking-wider">New Comments</p>
-                            <!-- Yahan PHP se comments count dalega ($total_comments) -->
                             <h3 class="fw-bold mb-0 text-slate-800">482</h3>
                         </div>
                         <div class="stats-icon-box bg-comments">
@@ -363,7 +380,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- QUICK ACTIONS BAR -->
         <div class="custom-card mb-4">
@@ -397,31 +414,22 @@
                                 </tr>
                             </thead>
                             <tbody>
+
+                            <?php 
+                            
+                            while($result = mysqli_fetch_assoc($user_data)){
+                            ?>
                                 <!-- Mock Data Template - Use PHP while-loop here -->
                                 <tr>
                                     <td class="d-flex align-items-center gap-3">
-                                        <img src="../uploads/default_admin.png" alt="" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover;">
-                                        <span class="fw-semibold">Mansoor Ali</span>
+                                        <img src="../uploads/<?php echo $result['profile_image']?>" alt="" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover;">
+                                        <span class="fw-semibold"><?php echo $result['name']?></span>
                                     </td>
-                                    <td>mansoor@gmail.com</td>
-                                    <td><span class="badge bg-danger rounded-pill px-2.5 py-1.5 text-uppercase">Admin</span></td>
+                                    <td><?php echo $result['email']?></td>
+                                    <td><span class="badge bg-danger rounded-pill px-2.5 py-1.5 text-uppercase"><?php echo $result['user_role']?></span></td>
                                 </tr>
-                                <tr>
-                                    <td class="d-flex align-items-center gap-3">
-                                        <img src="../uploads/default_admin.png" alt="" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover;">
-                                        <span class="fw-semibold">Kamran Shah</span>
-                                    </td>
-                                    <td>kamran@gmail.com</td>
-                                    <td><span class="badge bg-primary rounded-pill px-2.5 py-1.5 text-uppercase">Editor</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="d-flex align-items-center gap-3">
-                                        <img src="../uploads/default_admin.png" alt="" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover;">
-                                        <span class="fw-semibold">Sara Khan</span>
-                                    </td>
-                                    <td>sara@gmail.com</td>
-                                    <td><span class="badge bg-secondary rounded-pill px-2.5 py-1.5 text-uppercase">Viewer</span></td>
-                                </tr>
+                                <?php }   ?>
+                                
                             </tbody>
                         </table>
                     </div>
@@ -447,21 +455,18 @@
                             </thead>
                             <tbody>
                                 <!-- Mock Data Template - Use PHP while-loop here -->
+
+                                <?php 
+                            
+                            while($result = mysqli_fetch_assoc($post__catgory)){
+                            ?>
                                 <tr>
-                                    <td class="fw-semibold">How to learn PHP in 2026</td>
-                                    <td><span class="text-primary font-bold">Programming</span></td>
-                                    <td>04 June, 2026</td>
+                                    <td class="fw-semibold"><?php echo $result['title'];?></td>
+                                    <td><span class="text-primary font-bold"><?php echo $result['category_name'];?></span></td>
+                                    <td><?php echo $result['create_at'];?></td>
                                 </tr>
-                                <tr>
-                                    <td class="fw-semibold">Bootstrap 5 Custom Grid Layouts</td>
-                                    <td><span class="text-primary font-bold">Web Design</span></td>
-                                    <td>03 June, 2026</td>
-                                </tr>
-                                <tr>
-                                    <td class="fw-semibold">Securing Database with Prepared Statements</td>
-                                    <td><span class="text-primary font-bold">Cyber Security</span></td>
-                                    <td>01 June, 2026</td>
-                                </tr>
+<?php } ?>
+                                
                             </tbody>
                         </table>
                     </div>
