@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 require_once "../models/Post.php";
@@ -174,10 +174,25 @@ $post__catgory  = $post->get_category_deshboard();
         }
 
         /* Icon Colors & Backgrounds */
-        .bg-users { background-color: rgba(79, 70, 229, 0.1); color: #4f46e5; }
-        .bg-posts { background-color: rgba(14, 165, 233, 0.1); color: #0ea5e9; }
-        .bg-categories { background-color: rgba(245, 158, 11, 0.1); color: #f59e0b; }
-        .bg-comments { background-color: rgba(16, 185, 129, 0.1); color: #10b981; }
+        .bg-users {
+            background-color: rgba(79, 70, 229, 0.1);
+            color: #4f46e5;
+        }
+
+        .bg-posts {
+            background-color: rgba(14, 165, 233, 0.1);
+            color: #0ea5e9;
+        }
+
+        .bg-categories {
+            background-color: rgba(245, 158, 11, 0.1);
+            color: #f59e0b;
+        }
+
+        .bg-comments {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
 
         /* Dashboard Tables */
         .custom-card {
@@ -227,13 +242,16 @@ $post__catgory  = $post->get_category_deshboard();
             .sidebar {
                 left: -260px;
             }
+
             .sidebar.active {
                 left: 0;
             }
+
             .main-content {
                 margin-left: 0;
                 padding: 20px;
             }
+
             .main-content.active {
                 margin-left: var(--sidebar-width);
             }
@@ -298,7 +316,7 @@ $post__catgory  = $post->get_category_deshboard();
 
     <!-- MAIN DASHBOARD CONTENT AREA -->
     <div class="main-content" id="main-content">
-        
+
         <!-- Top Navbar Row -->
         <div class="top-navbar">
             <button class="btn btn-light d-lg-none" id="sidebarToggle">
@@ -308,7 +326,7 @@ $post__catgory  = $post->get_category_deshboard();
                 <h4 class="mb-0 fw-bold">System Dashboard Overview</h4>
                 <p class="text-muted small mb-0">Manage everything about your website from here.</p>
             </div>
-            
+
             <!-- Admin User Details Dropdown -->
             <div class="dropdown">
                 <a href="#" class="user-profile-btn dropdown-toggle" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
@@ -317,7 +335,9 @@ $post__catgory  = $post->get_category_deshboard();
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end shadow border-0" aria-labelledby="dropdownUser">
                     <li><a class="dropdown-item" href="user/edit.php"><i class="bi bi-person me-2"></i>My Profile</a></li>
-                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
                     <li><a class="dropdown-item text-danger" href="logout.php"><i class="bi bi-power me-2"></i>Logout</a></li>
                 </ul>
             </div>
@@ -395,7 +415,7 @@ $post__catgory  = $post->get_category_deshboard();
 
         <!-- RECENT POSTS AND RECENT USERS ROW -->
         <div class="row g-4">
-            
+
             <!-- Left Side: Recent Active Users -->
             <div class="col-lg-6">
                 <div class="custom-card h-100">
@@ -403,7 +423,7 @@ $post__catgory  = $post->get_category_deshboard();
                         <h5 class="fw-bold mb-0 text-slate-800"><i class="bi bi-people-fill text-indigo-500 me-2"></i>Recent Users Activity</h5>
                         <a href="user/index.php" class="btn btn-sm btn-link text-decoration-none">View All</a>
                     </div>
-                    
+
                     <div class="table-responsive">
                         <table class="table table-custom align-middle mb-0">
                             <thead>
@@ -415,21 +435,21 @@ $post__catgory  = $post->get_category_deshboard();
                             </thead>
                             <tbody>
 
-                            <?php 
-                            
-                            while($result = mysqli_fetch_assoc($user_data)){
-                            ?>
-                                <!-- Mock Data Template - Use PHP while-loop here -->
-                                <tr>
-                                    <td class="d-flex align-items-center gap-3">
-                                        <img src="../uploads/<?php echo $result['profile_image']?>" alt="" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover;">
-                                        <span class="fw-semibold"><?php echo $result['name']?></span>
-                                    </td>
-                                    <td><?php echo $result['email']?></td>
-                                    <td><span class="badge bg-danger rounded-pill px-2.5 py-1.5 text-uppercase"><?php echo $result['user_role']?></span></td>
-                                </tr>
+                                <?php
+
+                                while ($result = mysqli_fetch_assoc($user_data)) {
+                                ?>
+                                    <!-- Mock Data Template - Use PHP while-loop here -->
+                                    <tr>
+                                        <td class="d-flex align-items-center gap-3">
+                                            <img src="../uploads/<?php echo $result['profile_image'] ?>" alt="" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover;">
+                                            <span class="fw-semibold"><?php echo $result['name'] ?></span>
+                                        </td>
+                                        <td><?php echo $result['email'] ?></td>
+                                        <td><span class="badge bg-danger rounded-pill px-2.5 py-1.5 text-uppercase"><?php echo $result['user_role'] ?></span></td>
+                                    </tr>
                                 <?php }   ?>
-                                
+
                             </tbody>
                         </table>
                     </div>
@@ -443,7 +463,7 @@ $post__catgory  = $post->get_category_deshboard();
                         <h5 class="fw-bold mb-0 text-slate-800"><i class="bi bi-file-earmark-post-fill text-info me-2"></i>Recent Published Articles</h5>
                         <a href="post/index.php" class="btn btn-sm btn-link text-decoration-none">View All</a>
                     </div>
-                    
+
                     <div class="table-responsive">
                         <table class="table table-custom align-middle mb-0">
                             <thead>
@@ -456,17 +476,17 @@ $post__catgory  = $post->get_category_deshboard();
                             <tbody>
                                 <!-- Mock Data Template - Use PHP while-loop here -->
 
-                                <?php 
-                            
-                            while($result = mysqli_fetch_assoc($post__catgory)){
-                            ?>
-                                <tr>
-                                    <td class="fw-semibold"><?php echo $result['title'];?></td>
-                                    <td><span class="text-primary font-bold"><?php echo $result['category_name'];?></span></td>
-                                    <td><?php echo $result['create_at'];?></td>
-                                </tr>
-<?php } ?>
-                                
+                                <?php
+
+                                while ($result = mysqli_fetch_assoc($post__catgory)) {
+                                ?>
+                                    <tr>
+                                        <td class="fw-semibold"><?php echo $result['title']; ?></td>
+                                        <td><span class="text-primary font-bold"><?php echo $result['category_name']; ?></span></td>
+                                        <td><?php echo $result['create_at']; ?></td>
+                                    </tr>
+                                <?php } ?>
+
                             </tbody>
                         </table>
                     </div>

@@ -1,3 +1,22 @@
+<?php
+
+
+
+if(isset($_REQUEST['create'])){
+
+  echo "if user login then he can comment on post else not";
+}
+
+?>
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -114,7 +133,7 @@
             </div>
 
             <div class="d-grid">
-                <button type="submit" class="btn btn-primary btn-login">
+                <button type="submit" name="create" class="btn btn-primary btn-login">
                     Login
                 </button>
             </div>

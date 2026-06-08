@@ -1,3 +1,16 @@
+<?php
+
+
+
+if(isset($_REQUEST['create'])){
+
+  echo "if user is admin then redirect to deshboard side ";
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -114,7 +127,7 @@
             </div>
 
             <div class="d-grid">
-                <button type="submit" class="btn btn-primary btn-login">
+                <button type="submit" name="create" class="btn btn-primary btn-login">
                     Login
                 </button>
             </div>
