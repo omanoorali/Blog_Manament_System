@@ -313,7 +313,7 @@ $post__catgory  = $post->get_category_deshboard();
             <div class="dropdown">
                 <a href="#" class="user-profile-btn dropdown-toggle" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="../uploads/default_admin.png" alt="Admin" style="width: 38px; height: 38px; border-radius: 50%; object-fit: cover;" class="border">
-                    <span class="d-none d-sm-inline">System Admin</span>
+                    <span class="d-none d-sm-inline">    <?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?></span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end shadow border-0" aria-labelledby="dropdownUser">
                     <li><a class="dropdown-item" href="user/edit.php"><i class="bi bi-person me-2"></i>My Profile</a></li>

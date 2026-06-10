@@ -1,3 +1,73 @@
+
+
+<?php
+// session_start(); // core php
+
+// if(isset($_POST["create"])){
+
+//     $email = $_POST["email"];
+//     $password = $_POST["password"];
+
+//     if($email == "admin@gmail.com" && $password == "1234"){
+
+//         $_SESSION["email"] = $email;
+
+//         header("Location: ../admin/deshboard.php");
+//         exit();
+
+//     } else {
+
+//         echo "Invalid email and password";
+
+//     }
+// }
+
+
+
+require_once "../models/auth.php";
+
+session_start();
+
+$auth = new auth();
+
+if(isset($_POST['create'])){
+     $email = $_POST["email"];
+    $password = $_POST["password"];
+
+
+    /// db data
+
+    if($email == "admin@gmakil.com" && $password == "1234"){
+
+    $user = [
+        'id'=>"1",
+        'name'=>"manoor",
+        'role'=>"admin"
+    ];
+
+
+
+    $auth->login($user);
+    header("location:../admin/deshboard.php");
+    
+    }else{
+        echo  "name and email invalid";
+    }
+}
+
+
+
+
+
+
+
+
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -87,6 +157,7 @@
                 <input
                     type="email"
                     class="form-control"
+                    name="email"
                     placeholder="Enter your email"
                     required>
             </div>
@@ -96,6 +167,7 @@
                 <input
                     type="password"
                     class="form-control"
+                    name="password"
                     placeholder="Enter your password"
                     required>
             </div>
@@ -114,13 +186,13 @@
             </div>
 
             <div class="d-grid">
-                <button type="submit" class="btn btn-primary btn-login">
+                <button type="submit" name="create" class="btn btn-primary btn-login">
                     Login
                 </button>
             </div>
 
             <div class="text-center mt-4">
-                <a href="login.php" class="admin-link">
+                <a href="login.php"  class="admin-link">
                     user login
                 </a>
             </div>
