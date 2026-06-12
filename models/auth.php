@@ -9,40 +9,43 @@ class Auth
 {
     private $db;
 
-public function _consturct(){
-    $database = new database();
-    $this->db = $database->get_connection();
-
-}
+    public function __construct()
+    {
+        $database = new database();
+        $this->db = $database->get_connection();
+    }
     public function login($user)
     {
         $_SESSION['user'] = [
             'id'   => $user['id'],
             'name' => $user['name'],
-            'role' => $user['role']
+            'role' => $user['role_name']
         ];
     }
 
-    public function logout()
+    public function attemptLogin($email, $password)
     {
-        session_destroy();
+        $sql = "SELECT * FROM users INNER JOIN role ON users.role_id = role.id WHERE users.email='{$email}' AND users.password='{$password}'";
+        $result = mysqli_query($this->db,$sql);
+                return  $result = mysqli_fetch_assoc($result);
     }
 
-    public function check()
-    {
-        return isset($_SESSION['user']);
-    }
-
-    public function isAdmin()
+     public function isAdmin()
     {
         return isset($_SESSION['user']) &&
-               $_SESSION['user']['role'] == 'admin';
+            $_SESSION['user']['role'] == 'admin';
     }
 
-    public function user()
-    {
-        return $_SESSION['user'];
+
+   public function logout()
+{
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
     }
+
+    $_SESSION = array();
+
+    session_destroy();
 }
 
-?>
+}

@@ -1,7 +1,19 @@
+<<<<<<< Updated upstream
 <?php 
+=======
+<?php
+session_start();
+
+
+if(!isset($_SESSION['user']['id']) || $_SESSION['user']['role'] !== "admin"){
+    header("location:../public/login.php");
+    exit();
+}
+>>>>>>> Stashed changes
 
 
 require_once "../models/Post.php";
+
 
 $user = new post_model();
 $user_data  = $user->get_users_deshboard();
@@ -9,6 +21,7 @@ $user_data  = $user->get_users_deshboard();
 
 $post = new post_model();
 $post__catgory  = $post->get_category_deshboard();
+
 
 
 
@@ -312,13 +325,19 @@ $post__catgory  = $post->get_category_deshboard();
             <!-- Admin User Details Dropdown -->
             <div class="dropdown">
                 <a href="#" class="user-profile-btn dropdown-toggle" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="../uploads/default_admin.png" alt="Admin" style="width: 38px; height: 38px; border-radius: 50%; object-fit: cover;" class="border">
-                    <span class="d-none d-sm-inline">    <?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''; ?></span>
+                    <span class="d-none d-sm-inline"> <?php echo $_SESSION['user']['name']; ?></span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end shadow border-0" aria-labelledby="dropdownUser">
+<<<<<<< Updated upstream
                     <li><a class="dropdown-item" href="user/edit.php"><i class="bi bi-person me-2"></i>My Profile</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item text-danger" href="logout.php"><i class="bi bi-power me-2"></i>Logout</a></li>
+=======
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item text-danger" href="../public/logout.php"><i class="bi bi-power me-2"></i>Logout</a></li>
+>>>>>>> Stashed changes
                 </ul>
             </div>
         </div>

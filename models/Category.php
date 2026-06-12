@@ -37,6 +37,12 @@ class category_model{
 
     }
 
+    public function get_data_by_cat_id($id){
+        $sql = "SELECT * FROM category where id={$id}";
+    $result = mysqli_query($this->db,$sql);
+    return $result;
+    }
+
     public function get_signle_cat($id){
 
     $sql = "SELECT * FROM category WHERE id={$id}";

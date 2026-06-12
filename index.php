@@ -7,27 +7,26 @@ $catgory = new category_model();
 $all_category = $catgory->get_all_cat();
 
 
-// posts
-// 1. Post Model ka object banayein
 $post = new post_model();
 
-// 2. Define karein ke ek page par kitni posts chahiye
+if($_REQUEST['category_id']){
+    $category_id = $_REQUEST['category_id'];
+
+}
+
+
 $posts_per_page = 3;
 
-// 3. URL se current page number lein (e.g., index.php?page=2), default 1 rakhein
 $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 if ($current_page < 1) {
     $current_page = 1;
 }
 
-// 4. Object ($post) se sirf is page ki posts fetch karein
 $all_posts = $post->get_all_home_post($current_page, $posts_per_page);
 
-// 5. Object ($post) se total posts ka count lein
 $total_posts = $post->get_total_posts_count();
 
-// 6. Total pages calculate karein
-$total_pages = ceil($total_posts / $posts_per_page)
+$total_pages = ceil($total_posts / $posts_per_page);
 ?>
 
 
@@ -109,7 +108,7 @@ $total_pages = ceil($total_posts / $posts_per_page)
                             <?php
                             while ($row = mysqli_fetch_assoc($all_category)) {
                             ?>
-                                <a href="#" onclick="filterCategory()" class="category-filter-btn flex items-center gap-2 px-4 py-2.5 text-sm text-slate-700 hover:bg-slate-50 rounded-xl transition">
+                                <a href="index.php?category_id=<?php echo  $row['id'];?>" onclick="filterCategory()" class="category-filter-btn flex items-center gap-2 px-4 py-2.5 text-sm text-slate-700 hover:bg-slate-50 rounded-xl transition">
                                     <span class="w-2.5 h-2.5 rounded-full bg-slate-400"></span> <?php echo htmlspecialchars($row['name']); ?>
                                 </a>
                             <?php } ?>

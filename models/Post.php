@@ -180,4 +180,18 @@ class post_model
         return $result;
     }
 
+
+
+     public function get_data_by_cat_id($id){
+         $sql = "SELECT post.*,  
+                       category.name as category_name 
+                FROM post 
+                INNER JOIN category ON category.id = post.category_id 
+               ORDER BY post.id DESC where category.id={$id}";
+    $result = mysqli_query($this->db,$sql);
+    return $result;
+    }
+
+
+
 }
